@@ -23551,14 +23551,16 @@
   <div class="md-post__content md-typeset">
     <h2 id="introducing-the-new-mobile-app-security-weakness-enumeration-maswe"><a class="toclink" href="../../2024/07/30/new-maswe/">Introducing the new Mobile App Security Weakness Enumeration (MASWE)</a></h2>
 <p>The OWASP MAS project continues to lead the way in mobile application security, providing robust and up-to-date resources for developers and security professionals alike. Our team has been working diligently with the MAS community and industry to refactor the <a href="https://mas.owasp.org/MASVS/">Mobile Application Security Verification Standard (MASVS)</a> and the <a href="https://mas.owasp.org/MASTG/">Mobile Application Security Testing Guide (MASTG)</a>. In this blog post, we'll walk you through our latest addition to the MAS project: the brand new <a href="https://mas.owasp.org/MASWE/">Mobile App Security Weakness Enumeration (MASWE)</a>.</p>
-<p><center>
+<center>
 <img style="width: 40%; border-radius: 5px" src="/assets/maswe-overview.png"/>
-</center></p>
+</center>
+
 <h3 id="refactoring-the-mastg"><a class="toclink" href="../../2024/07/30/new-maswe/#refactoring-the-mastg">Refactoring the MASTG</a></h3>
 <p>We began the refactoring process in 2021, focusing first on the MASVS and then on the MASTG. Our primary goal was to break the MASTG v1 into modular components, including tests, techniques, tools, and applications.</p>
-<p><center>
+<center>
 <img style="width: 80%; border-radius: 5px" src="/assets/news/mas_v2_arch.png"/>
-</center></p>
+</center>
+
 <p>This modular approach allows us to <strong>maintain and update each component independently</strong>, ensuring that the MASTG remains current and relevant. For example, in our previous structure, the MASTG consisted of large test cases within a single markdown file. This was not only difficult to maintain but also made it challenging to reference specific tests; and it was impossible to have metadata for each test.</p>
 <p>The new structure divides tests into individual pages (Markdown files with metadata), each with its own ID (<code>MASTG-TEST-****</code>) and links to relevant techniques (<code>MASTG-TECH-****</code>) and tools (<code>MASTG-TOOL-****</code>). This encapsulation ensures that <strong>each test is easily referenced and promotes reusability</strong> across all MAS components. For example, you can open a test and see what tools and techniques are being used, and soon you'll be able to do the same in reverse: open a tool or technique and see all the tests that use it. This deep cross-referencing can be extremely powerful when exploring the MASTG.</p>
 <h3 id="introducing-maswe"><a class="toclink" href="../../2024/07/30/new-maswe/#introducing-maswe">Introducing MASWE</a></h3>
@@ -23591,14 +23593,16 @@
 </blockquote>
 </li>
 </ol>
-<p><center>
+<center>
 <img style="width: 80%; border-radius: 5px" src="/assets/news/mastg_v2_structure.png"/>
-</center></p>
+</center>
+
 <h3 id="practical-applications-and-demos"><a class="toclink" href="../../2024/07/30/new-maswe/#practical-applications-and-demos">Practical Applications and Demos</a></h3>
 <p>To ensure our guidelines are practical and reliable, we've developed new MAS Test Apps for both Android and iOS.</p>
-<p><center>
+<center>
 <img style="width: 60%; border-radius: 5px" src="/assets/news/mastestapps.png"/>
-</center></p>
+</center>
+
 <p>These simple, skeleton applications are designed to embed code samples directly, allowing users to validate and experiment with the provided demos. This approach ensures that all code samples are functional and up-to-date, fostering a hands-on learning experience.</p>
 <p>For example, to test for secure storage, <a href="https://mas.owasp.org/MASTG/demos/android/MASVS-STORAGE/MASTG-DEMO-0002/MASTG-DEMO-0002/">MASTG-DEMO-0002</a> shows how to use dynamic analysis with Frida to identify the issues in the code. The demo includes:</p>
 <ul>
@@ -23626,25 +23630,27 @@
 <p>They are also <strong>great for advanced researchers and pentesters</strong> to quickly validate certain scenarios. For example, it's very common to find cases where Android behaves differently depending on the version or the manufacturer. With these demos, you can quickly validate if a certain issue is present on a specific device or Android version.</p>
 <h3 id="automation-with-github-actions"><a class="toclink" href="../../2024/07/30/new-maswe/#automation-with-github-actions">Automation with GitHub Actions</a></h3>
 <p>Going forward, we want to automate the process of creating and validating the new demos, and ensure that the tests remain functional over time. We'll be using GitHub Actions to do this. Here is the plan:</p>
-<p><center>
+<center>
 <img style="width: 60%; border-radius: 5px" src="/assets/news/app_automation_vision.png"/>
-</center></p>
+</center>
+
 <ol>
 <li><strong>Build the app</strong>: Automatically build the APK/IPA for Android and iOS.</li>
 <li><strong>Deploy the app to a virtual device</strong>: install and run the generated app on a virtual device.</li>
 <li><strong>Execute tests and validate results</strong>: Execute static tests with tools like semgrep or radare2 as well as dynamic tests using Frida and mitmproxy on the target device. Finally, compare the test results with the expected output.</li>
 </ol>
 <p>We've currently implemented a PoC for the first step (only for Android APKs), and are working on the next steps. If you're interested in contributing to this effort, please <a href="https://mas.owasp.org/contact/">let us know</a>!</p>
-<p><center>
+<center>
 <img style="width: 80%; border-radius: 5px" src="/assets/news/apk_build_autom.png"/>
-</center></p>
+</center>
+
 <h3 id="feedback-wanted"><a class="toclink" href="../../2024/07/30/new-maswe/#feedback-wanted">Feedback Wanted</a></h3>
 <p>We encourage you to explore the new <a href="https://mas.owasp.org/MASWE/">MASWE</a>, <a href="https://mas.owasp.org/MASTG/tests-beta/">MASTG tests</a> and <a href="https://mas.owasp.org/MASTG/demos/">MASTG demos</a>. Your insights and experiences are invaluable to us, and we invite you to <strong>share your feedback</strong> in our <a href="https://github.com/OWASP/owasp-mastg/discussions/categories/maswe-mastg-v2-beta-Feedback">GitHub discussions</a> to help us continue to improve. This way we can ensure that our resources are practical, reliable, and valuable for real-world application.</p>
 <p>You can also <strong>contribute to the project</strong> by creating new weaknesses, tests, techniques, tools, or demos. We welcome all contributions and feedback, and we look forward to working with you to make the MAS project the best it can be.</p>
-<p><center>
-<big><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> Go to our GitHub repo and check our <a href="https://github.com/OWASP/owasp-mastg/milestones">milestones</a> and <a href="https://github.com/OWASP/owasp-mastg/discussions/categories/maswe-mastg-v2-beta-Feedback">GitHub discussions</a>.
+<center>
+<big>:simple-github: Go to our GitHub repo and check our [milestones](https://github.com/OWASP/owasp-mastg/milestones) and [GitHub discussions](https://github.com/OWASP/owasp-mastg/discussions/categories/maswe-mastg-v2-beta-Feedback).
 </big>
-</center></p>
+</center>
     
   </div>
 </article>
@@ -23685,9 +23691,9 @@
     <h2 id="new-standard-for-secure-mobile-app-transactions"><a class="toclink" href="../../2024/02/19/new-standard-for-secure-mobile-app-transactions/">New Standard for Secure Mobile App Transactions</a></h2>
 <p>The Cyber Security Agency of Singapore (CSA) launched the <a href="https://www.csa.gov.sg/News-Events/Press-Releases/2024/csa-publishes-recommended-standard-for-more-secure-transactions-made-via-mobile-applications">"Safe App Standard"</a> on January 10, 2024. Tailored for local app developers and service providers, this guideline is based on the OWASP Mobile Application Security Verification Standard (MASVS) and focuses on critical areas such as authentication and authorization (MASVS-AUTH), data storage (MASVS-STORAGE), and tamper resistance (MASVS-RESILIENCE). The initiative aims to protect apps from common cyber threats and ensure a safer digital space for users.</p>
 <p>While the Safe App Standard is a significant step forward in securing mobile applications, developers are encouraged to consider the <a href="https://mas.owasp.org/MASVS/">full MASVS</a> and select the appropriate MAS profiles for comprehensive protection. This holistic approach to app security ensures that apps go beyond meeting the baseline and are protected against a wider range of cyber threats, providing robust security for end users.</p>
-<p><center>
+<center>
 <img style="width: 20%; border-radius: 5px" src="/assets/news/safe_app_standard.png"/>
-</center></p>
+</center>
     
   </div>
 </article>
